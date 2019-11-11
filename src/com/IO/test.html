@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--<meta property="qc:admins" content="465267610762567726375" />-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="10.2.3 缓冲字节流">
+    <meta name="description" content="尚学堂旗下高端品牌速学堂，速学堂教程提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python，Java，Ruby，C，PHP , MySQL等各种编程语言的基础知识。 同时本站中也提供了大量的在线实例，通过实例，您可以更好的学习编程。..">
+    <title>10.2.3 缓冲字节流 | 速学堂教程 - 学的不仅是技术，更是梦想！--尚学堂旗下高端品牌</title>
+    <link rel="stylesheet" href="/public/css/index.css" />
+    <link rel="stylesheet" href="/public/css/title.css" />
+    <link href="/public/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/public/css/menu.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/public/css/comment_style.css">
+    <link rel="stylesheet" href="/public/css/comment_new.css">
+    <link href="/public/jwplayer/player.css" rel="stylesheet" type="text/css" />
+     <script type="text/javascript" src="/public/jwplayer/jQuery-1.8.0.js"></script>
+    <script src="/public/js/index.js?v=1.0" type="text/javascript"></script>
+    <script type="text/javascript" src="/public/js/sxt.js"></script>
+    <script type="text/javascript" src="/public/js/menu.js"></script>
+    <script type="text/javascript" src="/public/admin/UEditor/third-party/SyntaxHighlighter/shCore.js"></script>
+    <link rel="stylesheet" href="/public/admin/UEditor/third-party/SyntaxHighlighter/shCoreDefault.css">
+    <script type="text/javascript">
+        SyntaxHighlighter.all();
+    </script>
+    <link rel="stylesheet" href="/public/css/facebook.css"/>
+    <script src="/public/js/artDialog.min.js"></script>
+    <script src="/public/js/postil.js"></script>
+        <link rel="stylesheet" href="/public/css/jquery.mCustomScrollbar.css">
+    <script type="text/javascript" src="/public/js/jquery.mCustomScrollbar.js"></script>
+    <script type="text/javascript" src="/public/js/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="/public/js/title.js"></script>
+    <script type="text/javascript" src="/public/js/jquery.flexText.js"></script>
+    <script type="text/javascript" src="/public/jwplayer/jwplayer.js"></script>
+     <style>
+        @media screen and (max-width:1000px) {
+            .wap_main {width: 1200px; margin:0 auto; display:table; overflow:hidden;}
+        }
+    </style>
+</head>
+<body>
+<div class="wap_main">
+    <div class="top_bg" style="z-index:1;">
+        <div class="main">
+            <ul class="menu" style="padding:0px">
+                <li class="no_sub"><a href="/" class="tablink" target="_blank" title="速学堂">尚学堂旗下高端品牌：速学堂</a></li>
+                <li class="no_sub"><a href="https://www.itbaizhan.cn" class="tablink" target="_blank" title="百战程序员">百战程序员</a></li>
+            </ul>
+            <div class="top_right">
+            <ul class="menu" style="text-align: left">
+            </ul>    
+            当前访客身份： <span id="email">游客</span> [<a href="/index/login/login.html"  id="loginid">登录</a><span id="lineid">&nbsp;|&nbsp;</span><a href="/index/login/register.html" id="registerid">注册加入速学堂</a><a id="logoutid" style="display:none" href="/index/login/logout.html">退出</a>]
+            </div>
+        </div>
+    </div>
+    <div class="header_kn">
+        <div class="content_kn headerCon_kn">
+            <div class="logo_kn fl">
+                <a href="/"><img src="/public/images/logo_kn.png" title="实战化教学领导品牌"/></a>
+            </div>
+            <div class="banner fr" style="margin-right: 85px;">
+                <a href="http://sxt.cn/python/1-1.html">
+                    <img src="/public/images/banner.jpg" alt="">
+                </a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+<div class="nav_kn">
+    <div class="content_kn navCon_kn student">
+        <ul>
+            <li>
+                <a href="/" class="navOn_kn">首页</a>
+            </li>
+                        <li>
+                <a href="/Java_jQuery_in_action/History_Direction.html">Java 实战教程系列</a>
+            </li>
+                        <li>
+                <a href="/2019_Interview_questions/fengmian.html">Java面试题集</a>
+            </li>
+                        <li>
+                <a href="/tomcat/webserver.html">Tomcat视频教程</a>
+            </li>
+                        <li>
+                <a href="/Oracle_MySQL/1-1.html">Oracle+MySQL</a>
+            </li>
+                        <li>
+                <a href="/awt/awt_component.html">AWT</a>
+            </li>
+                        <li>
+                <a href="/java.lang/java.lang.html">Java.lang教程</a>
+            </li>
+                        <li>
+                <a href="/math/java_math_bigdecimal.html">Java.math包</a>
+            </li>
+                    </ul>
+    </div>
+    <div class="content_kn navCon_kn teacher">
+        <ul>
+            <li>
+                <a href="/" class="navOn_kn">首页</a>
+            </li>
+            <li>
+                <a href="/Java_jQuery_in_action/History_Direction.html">Java 实战教程系列</a>
+            </li>
+            <li>
+                                <a href="/admin/specific/index/type_id/248" class="edit_specific">编辑教程</a>
+                            </li>
+            <li>
+                <a href="javascript:;" class="edit_course">编辑文章</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="info_kn">
+    <div class="content_kn">
+        <div class="infoL_kn">
+            <div class="placeholder"></div>
+                        <div class="menu1_kn">
+             <a href="javascript:;" title="第一章 Java入门" class="menuT1_kn">第一章 Java入门</a>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="1.1 计算机语言发展史以及未来方向" href="/Java_jQuery_in_action/History_Direction.html" class="mencon2_kn ">1.1 计算机语言发展史以及未来方向</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="1.2 常见编程语言介绍" href="/Java_jQuery_in_action/Introduction_of_programming_language.html" class="mencon2_kn ">1.2 常见编程语言介绍</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="1.3.1 Java发展简史" href="/Java_jQuery_in_action/Java_phylogeny.html" class="mencon2_kn ">1.3.1 Java发展简史</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="1.3.2 Java的核心优势" href="/Java_jQuery_in_action/Java_core_advantage.html" class="mencon2_kn ">1.3.2 Java的核心优势</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="1.3.3 Java各版本的含义" href="/Java_jQuery_in_action/Java_Version_meaning.html" class="mencon2_kn ">1.3.3 Java各版本的含义</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="1.3.4 Java的特性和优势" href="/Java_jQuery_in_action/ Java_Characteristics_and_advantages.html" class="mencon2_kn ">1.3.4 Java的特性和优势</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="1.3.5 Java应用程序的运行机制" href="/Java_jQuery_in_action/Java_Application_and_operating_mechanism.html" class="mencon2_kn ">1.3.5 Java应用程序的运行机制</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="1.3.6 JVM、JRE和JDK" href="/Java_jQuery_in_action/JVM_JRE_JDK.html" class="mencon2_kn ">1.3.6 JVM、JRE和JDK</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="1.4.1 JDK下载和安装 " href="/Java_jQuery_in_action/jdk_download_and_install.html" class="mencon2_kn ">1.4.1 JDK下载和安装 </a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="1.4.2 环境变量Path的配置" href="/Java_jQuery_in_action/environment_variable_configuration.html" class="mencon2_kn ">1.4.2 环境变量Path的配置</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="1.4.3 测试JDK安装成功" href="/Java_jQuery_in_action/Test_JDK_install_successfully.html" class="mencon2_kn ">1.4.3 测试JDK安装成功</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="1.5.1 开发第一个Java程序" href="/Java_jQuery_in_action/The_First_Java_Procedure.html" class="mencon2_kn ">1.5.1 开发第一个Java程序</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="1.5.2 第一个程序常见错误" href="/Java_jQuery_in_action/The_first_program_normal_error.html" class="mencon2_kn ">1.5.2 第一个程序常见错误</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="1.5.3 第一个Java程序的总结和提升" href="/Java_jQuery_in_action/The_First_Program_Summary_and_promotion.html" class="mencon2_kn ">1.5.3 第一个Java程序的总结和提升</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="1.5.4 最常用DOS命令" href="/Java_jQuery_in_action/The_Most_Common_DOS_Order.html" class="mencon2_kn ">1.5.4 最常用DOS命令</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="1.6 常用Java开发工具" href="/Java_jQuery_in_action/Normal_Java_Development_Tool.html" class="mencon2_kn ">1.6 常用Java开发工具</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="1.7 eclipse使用10分钟入门" href="/Java_jQuery_in_action/Eclipse_Introduction.html" class="mencon2_kn ">1.7 eclipse使用10分钟入门</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="1.7.1 下载和安装eclipse" href="/Java_jQuery_in_action/Download_and_Install_Eclipps.html" class="mencon2_kn ">1.7.1 下载和安装eclipse</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="1.7.2 在eclipse中创建  Java项目" href="/Java_jQuery_in_action/Create_Project_in_Eclips.html" class="mencon2_kn ">1.7.2 在eclipse中创建  Java项目</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="1.7.3 使用eclipse开发和运行Java程序" href="/Java_jQuery_in_action/Development_and_Running_Program_by_Using_Eclips.html" class="mencon2_kn ">1.7.3 使用eclipse开发和运行Java程序</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="1.8 30分钟完成桌球小游戏项目" href="/Java_jQuery_in_action/Billiards_Games.html" class="mencon2_kn ">1.8 30分钟完成桌球小游戏项目</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第一章 总结" href="/Java_jQuery_in_action/java-Summery.html" class="mencon2_kn ">第一章 总结</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第一章 作业" href="/Java_jQuery_in_action/java-Exercise.html" class="mencon2_kn ">第一章 作业</a>
+                              </div>
+                         </div>
+                        <div class="menu1_kn">
+             <a href="javascript:;" title="第二章 数据类型和运算符" class="menuT1_kn">第二章 数据类型和运算符</a>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.1 注释" href="/Java_jQuery_in_action/Java_Note.html" class="mencon2_kn ">2.1 注释</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.2 标识符" href="/Java_jQuery_in_action/Java_Identifier.html" class="mencon2_kn ">2.2 标识符</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.3 Java中的关键字/保留字" href="/Java_jQuery_in_action/Java_Keywords.html" class="mencon2_kn ">2.3 Java中的关键字/保留字</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.4.1 变量的本质" href="/Java_jQuery_in_action/The_essence_of_variable.html" class="mencon2_kn ">2.4.1 变量的本质</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.4.2 变量的分类" href="/Java_jQuery_in_action/Java_Classification_of_variables.html" class="mencon2_kn ">2.4.2 变量的分类</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.5 常量(Constant)" href="/Java_jQuery_in_action/Java_Constant.html" class="mencon2_kn ">2.5 常量(Constant)</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.6 基本数据类型(primitive data type) " href="/Java_jQuery_in_action/Java_primitive_data_type.html" class="mencon2_kn ">2.6 基本数据类型(primitive data type) </a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.6.1 整型变量/常量" href="/Java_jQuery_in_action/Java_integer_variable.html" class="mencon2_kn ">2.6.1 整型变量/常量</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.6.2 浮点型变量/常量" href="/Java_jQuery_in_action/Java_Floating_point_variables.html" class="mencon2_kn ">2.6.2 浮点型变量/常量</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.6.3 字符型变量/常量" href="/Java_jQuery_in_action/Java_Character_variables.html" class="mencon2_kn ">2.6.3 字符型变量/常量</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.6.4 boolean类型变量/常量" href="/Java_jQuery_in_action/Java_Type_variable.html" class="mencon2_kn ">2.6.4 boolean类型变量/常量</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.7 运算符(operator) " href="/Java_jQuery_in_action/Java_operator.html" class="mencon2_kn ">2.7 运算符(operator) </a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.7.1 算术运算符" href="/Java_jQuery_in_action/arithmetic_operator.html" class="mencon2_kn ">2.7.1 算术运算符</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.7.2 赋值及其扩展赋值运算符" href="/Java_jQuery_in_action/Assignment_and_its_extension_assignment_operator.html" class="mencon2_kn ">2.7.2 赋值及其扩展赋值运算符</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.7.3 关系运算符" href="/Java_jQuery_in_action/Java_relational_operator.html" class="mencon2_kn ">2.7.3 关系运算符</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.7.4 逻辑运算符" href="/Java_jQuery_in_action/Java_logical_operator.html" class="mencon2_kn ">2.7.4 逻辑运算符</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.7.5 位运算符" href="/Java_jQuery_in_action/An_operator.html" class="mencon2_kn ">2.7.5 位运算符</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.7.6 字符串连接符" href="/Java_jQuery_in_action/Java_String_concatenation.html" class="mencon2_kn ">2.7.6 字符串连接符</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.7.7 条件运算符" href="/Java_jQuery_in_action/Java_conditional_operator.html" class="mencon2_kn ">2.7.7 条件运算符</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.7.8 运算符优先级的问题" href="/Java_jQuery_in_action/Java_precedence_of_operator.html" class="mencon2_kn ">2.7.8 运算符优先级的问题</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.8.1 自动类型转换" href="/Java_jQuery_in_action/Java_conversion.html" class="mencon2_kn ">2.8.1 自动类型转换</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.8.2 强制类型转换" href="/Java_jQuery_in_action/Java_Automatic_type_conversion.html" class="mencon2_kn ">2.8.2 强制类型转换</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.8.3 基本类型转化时常见错误和问题" href="/Java_jQuery_in_action/Java_Error.html" class="mencon2_kn ">2.8.3 基本类型转化时常见错误和问题</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="2.9 简单的键盘输入和输出" href="/Java_jQuery_in_action/Java_Input_and_Output.html" class="mencon2_kn ">2.9 简单的键盘输入和输出</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第二章 总结" href="/Java_jQuery_in_action/two_Summery.html" class="mencon2_kn ">第二章 总结</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第二章 作业" href="/Java_jQuery_in_action/two-Exercise.html" class="mencon2_kn ">第二章 作业</a>
+                              </div>
+                         </div>
+                        <div class="menu1_kn">
+             <a href="javascript:;" title="第三章 控制语句" class="menuT1_kn">第三章 控制语句</a>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="3.0 控制语句" href="/Java_jQuery_in_action/Java_control_statement.html" class="mencon2_kn ">3.0 控制语句</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="3.1 选择结构" href="/Java_jQuery_in_action/Java_case_structure.html" class="mencon2_kn ">3.1 选择结构</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="3.1.1 if单选择结构" href="/Java_jQuery_in_action/Java_Single_selection_structure.html" class="mencon2_kn ">3.1.1 if单选择结构</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="3.1.2 if-else双选择结构" href="/Java_jQuery_in_action/Java_if_else_Double_selection_structure.html" class="mencon2_kn ">3.1.2 if-else双选择结构</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="3.1.3 if-else if-else多选择结构" href="/Java_jQuery_in_action/Java_ if_else_ if_else.html" class="mencon2_kn ">3.1.3 if-else if-else多选择结构</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="3.1.4 switch多选择结构" href="/Java_jQuery_in_action/Java_Multiple_selection_structure.html" class="mencon2_kn ">3.1.4 switch多选择结构</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="3.2 循环结构" href="/Java_jQuery_in_action/loop structure.html" class="mencon2_kn ">3.2 循环结构</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="3.2.1 while循环" href="/Java_jQuery_in_action/While.html" class="mencon2_kn ">3.2.1 while循环</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="3.2.2 do-while循环" href="/Java_jQuery_in_action/do_while.html" class="mencon2_kn ">3.2.2 do-while循环</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="3.2.3 for循环" href="/Java_jQuery_in_action/for.html" class="mencon2_kn ">3.2.3 for循环</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="3.2.4 嵌套循环" href="/Java_jQuery_in_action/nested_loop.html" class="mencon2_kn ">3.2.4 嵌套循环</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="3.2.5 break语句和continue语句" href="/Java_jQuery_in_action/Break_and_continue.html" class="mencon2_kn ">3.2.5 break语句和continue语句</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="3.2.6 带标签的break和continue" href="/Java_jQuery_in_action/break_and_continue_With_labels.html" class="mencon2_kn ">3.2.6 带标签的break和continue</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="3.3 语句块" href="/Java_jQuery_in_action/block.html" class="mencon2_kn ">3.3 语句块</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="3.4 方法" href="/Java_jQuery_in_action/java-solution.html" class="mencon2_kn ">3.4 方法</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="3.5 方法的重载(overload)" href="/Java_jQuery_in_action/solution_overload.html" class="mencon2_kn ">3.5 方法的重载(overload)</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="3.6 递归结构" href="/Java_jQuery_in_action/The_recursive_structure.html" class="mencon2_kn ">3.6 递归结构</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第三章 总结" href="/Java_jQuery_in_action/openketang-Summery.html" class="mencon2_kn ">第三章 总结</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第三章 作业" href="/Java_jQuery_in_action/openketang-Exercise.html" class="mencon2_kn ">第三章 作业</a>
+                              </div>
+                         </div>
+                        <div class="menu1_kn">
+             <a href="javascript:;" title="第四章 Java面向对象基础" class="menuT1_kn">第四章 Java面向对象基础</a>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.1 面向过程和面向对象" href="/Java_jQuery_in_action/Object_oriented_and_process_oriented.html" class="mencon2_kn ">4.1 面向过程和面向对象</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.2 对象的进化史(数据管理和企业管理共通之处)" href="/Java_jQuery_in_action/Object_evolutionary_history.html" class="mencon2_kn ">4.2 对象的进化史(数据管理和企业管理共通之处)</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.3 对象和类的概念" href="/Java_jQuery_in_action/Concepts_of_objects_and_classes.html" class="mencon2_kn ">4.3 对象和类的概念</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.3.1 第一个类的定义" href="/Java_jQuery_in_action/The_definition_of_the_first_class.html" class="mencon2_kn ">4.3.1 第一个类的定义</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.3.2 属性(field，或者叫成员变量)" href="/Java_jQuery_in_action/property.html" class="mencon2_kn ">4.3.2 属性(field，或者叫成员变量)</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.3.3 方法" href="/Java_jQuery_in_action/solution.html" class="mencon2_kn ">4.3.3 方法</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.3.4 一个典型类的定义和UML图" href="/Java_jQuery_in_action/Definition_of_a_typical_type_and_UMI.html" class="mencon2_kn ">4.3.4 一个典型类的定义和UML图</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.4 面向对象的内存分析" href="/Java_jQuery_in_action/object-oriented.html" class="mencon2_kn ">4.4 面向对象的内存分析</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.5 构造方法" href="/Java_jQuery_in_action/construction_method.html" class="mencon2_kn ">4.5 构造方法</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.6 构造方法的重载" href="/Java_jQuery_in_action/Overloading_of_construction_methods.html" class="mencon2_kn ">4.6 构造方法的重载</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.7 垃圾回收机制(Garbage Collection)" href="/Java_jQuery_in_action/Garbage_Collection.html" class="mencon2_kn ">4.7 垃圾回收机制(Garbage Collection)</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.7.1 垃圾回收原理和算法" href="/Java_jQuery_in_action/Principle_and_algorithm_of_garbage_collection.html" class="mencon2_kn ">4.7.1 垃圾回收原理和算法</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.7.2 通用的分代垃圾回收机制" href="/Java_jQuery_in_action/The_garbage_collection_mechanism.html" class="mencon2_kn ">4.7.2 通用的分代垃圾回收机制</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.7.3 JVM调优和Full GC" href="/Java_jQuery_in_action/JVM_and_Full_GC.html" class="mencon2_kn ">4.7.3 JVM调优和Full GC</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.7.4 开发中容易造成内存泄露的操作" href="/Java_jQuery_in_action/The_operation_of_memory_leakage_in_development.html" class="mencon2_kn ">4.7.4 开发中容易造成内存泄露的操作</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.8 this关键字" href="/Java_jQuery_in_action/this_keywords.html" class="mencon2_kn ">4.8 this关键字</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.9 static 关键字" href="/Java_jQuery_in_action/static_keywords.html" class="mencon2_kn ">4.9 static 关键字</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.10 静态初始化块" href="/Java_jQuery_in_action/Static_initialization_blocks.html" class="mencon2_kn ">4.10 静态初始化块</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.11 参数传值机制" href="/Java_jQuery_in_action/Parameter_value_mechanism.html" class="mencon2_kn ">4.11 参数传值机制</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.12 包" href="/Java_jQuery_in_action/Package.html" class="mencon2_kn ">4.12 包</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.13 package" href="/Java_jQuery_in_action/package.html" class="mencon2_kn ">4.13 package</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.13.1 JDK中的主要包" href="/Java_jQuery_in_action/Main_Package_in_JDK.html" class="mencon2_kn ">4.13.1 JDK中的主要包</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.13.2 导入类import" href="/Java_jQuery_in_action/Import_the_class.html" class="mencon2_kn ">4.13.2 导入类import</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="4.13.3 静态导入" href="/Java_jQuery_in_action/Static_imports.html" class="mencon2_kn ">4.13.3 静态导入</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第四章 总结" href="/Java_jQuery_in_action/Summery.html" class="mencon2_kn ">第四章 总结</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第四章 作业" href="/Java_jQuery_in_action/Exercise.html" class="mencon2_kn ">第四章 作业</a>
+                              </div>
+                         </div>
+                        <div class="menu1_kn">
+             <a href="javascript:;" title="第五章 Java面向对象进阶" class="menuT1_kn">第五章 Java面向对象进阶</a>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.1 概述" href="/Java_jQuery_in_action/Five-Summary.html" class="mencon2_kn ">5.1 概述</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.1.1 继承的实现" href="/Java_jQuery_in_action/Five-extends.html" class="mencon2_kn ">5.1.1 继承的实现</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.1.2 instanceof运算符" href="/Java_jQuery_in_action/Five-instanceof.html" class="mencon2_kn ">5.1.2 instanceof运算符</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.1.3 继承使用要点" href="/Java_jQuery_in_action/Five-essentials.html" class="mencon2_kn ">5.1.3 继承使用要点</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.1.4 方法的重写override" href="/Java_jQuery_in_action/Five-override.html" class="mencon2_kn ">5.1.4 方法的重写override</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.2.1 Object类基本特性" href="/Java_jQuery_in_action/Five-Object.html" class="mencon2_kn ">5.2.1 Object类基本特性</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.2.2 toString方法" href="/Java_jQuery_in_action/Five-toString.html" class="mencon2_kn ">5.2.2 toString方法</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.2.3 ==和equals方法" href="/Java_jQuery_in_action/Five-Method.html" class="mencon2_kn ">5.2.3 ==和equals方法</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.3 super关键字" href="/Java_jQuery_in_action/Five-super.html" class="mencon2_kn ">5.3 super关键字</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.3.1 继承树追溯" href="/Java_jQuery_in_action/Five-retrospect.html" class="mencon2_kn ">5.3.1 继承树追溯</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.4.1 封装的作用和含义" href="/Java_jQuery_in_action/five-encapsulation.html" class="mencon2_kn ">5.4.1 封装的作用和含义</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.4.2 封装的实现—使用访问控制符" href="/Java_jQuery_in_action/five-control-character.html" class="mencon2_kn ">5.4.2 封装的实现—使用访问控制符</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.4.3 封装的使用细节" href="/Java_jQuery_in_action/five-details.html" class="mencon2_kn ">5.4.3 封装的使用细节</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.5 多态(polymorphism)" href="/Java_jQuery_in_action/five-polymorphism.html" class="mencon2_kn ">5.5 多态(polymorphism)</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.6 对象的转型(casting)" href="/Java_jQuery_in_action/five-casting.html" class="mencon2_kn ">5.6 对象的转型(casting)</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.7 final关键字" href="/Java_jQuery_in_action/five-final.html" class="mencon2_kn ">5.7 final关键字</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.8 抽象方法和抽象类" href="/Java_jQuery_in_action/five-abstract.html" class="mencon2_kn ">5.8 抽象方法和抽象类</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.9.1 接口的作用" href="/Java_jQuery_in_action/five-Interfacerole.html" class="mencon2_kn ">5.9.1 接口的作用</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.9.2 如何定义和使用接口?" href="/Java_jQuery_in_action/five-definition-use.html" class="mencon2_kn ">5.9.2 如何定义和使用接口?</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.9.3 接口的多继承" href="/Java_jQuery_in_action/five-multiple-inheritance.html" class="mencon2_kn ">5.9.3 接口的多继承</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.9.4 面向接口编程" href="/Java_jQuery_in_action/five-interface-programming.html" class="mencon2_kn ">5.9.4 面向接口编程</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.10.1 内部类的概念" href="/Java_jQuery_in_action/five-inner-class.html" class="mencon2_kn ">5.10.1 内部类的概念</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.10.2 内部类的分类" href="/Java_jQuery_in_action/five-classification.html" class="mencon2_kn ">5.10.2 内部类的分类</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.11.1 String基础" href="/Java_jQuery_in_action/five-string-basics.html" class="mencon2_kn ">5.11.1 String基础</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.11.2 String类和常量池" href="/Java_jQuery_in_action/five-constant-pool.html" class="mencon2_kn ">5.11.2 String类和常量池</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.11.3 阅读API文档" href="/Java_jQuery_in_action/five-api-document.html" class="mencon2_kn ">5.11.3 阅读API文档</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.11.4 String类常用的方法" href="/Java_jQuery_in_action/five-common-methods.html" class="mencon2_kn ">5.11.4 String类常用的方法</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.11.5 字符串相等的判断" href="/Java_jQuery_in_action/five-equal judgment.html" class="mencon2_kn ">5.11.5 字符串相等的判断</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.12.1 开闭原则" href="/Java_jQuery_in_action/five-principle.html" class="mencon2_kn ">5.12.1 开闭原则</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.12.2 模板方法模式和回调机制" href="/Java_jQuery_in_action/five-template.html" class="mencon2_kn ">5.12.2 模板方法模式和回调机制</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="5.12.3 组合模式" href="/Java_jQuery_in_action/five-combination model.html" class="mencon2_kn ">5.12.3 组合模式</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第五章 总结" href="/Java_jQuery_in_action/five-summary.html" class="mencon2_kn ">第五章 总结</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第五章 作业" href="/Java_jQuery_in_action/five-task.html" class="mencon2_kn ">第五章 作业</a>
+                              </div>
+                         </div>
+                        <div class="menu1_kn">
+             <a href="javascript:;" title="第六章 异常机制" class="menuT1_kn">第六章 异常机制</a>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="6.1 导引问题" href="/Java_jQuery_in_action/six-navigation-problem.html" class="mencon2_kn ">6.1 导引问题</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="6.2 异常（Exception）的概念" href="/Java_jQuery_in_action/six-exception-1.html" class="mencon2_kn ">6.2 异常（Exception）的概念</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="6.3 异常分类" href="/Java_jQuery_in_action/anomaly-classification.html" class="mencon2_kn ">6.3 异常分类</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="6.3.1 Error" href="/Java_jQuery_in_action/six-error.html" class="mencon2_kn ">6.3.1 Error</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="6.3.2 Exception" href="/Java_jQuery_in_action/six-exception.html" class="mencon2_kn ">6.3.2 Exception</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="6.3.3 RuntimeException运行时异常" href="/Java_jQuery_in_action/six-runtimeexception.html" class="mencon2_kn ">6.3.3 RuntimeException运行时异常</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="6.3.4 CheckedException已检查异常" href="/Java_jQuery_in_action/six-checkedexception.html" class="mencon2_kn ">6.3.4 CheckedException已检查异常</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="6.4 异常的处理方式之一：捕获异常" href="/Java_jQuery_in_action/six-capture-exception.html" class="mencon2_kn ">6.4 异常的处理方式之一：捕获异常</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="6.5 异常的处理方式之二：声明异常（throws子句）" href="/Java_jQuery_in_action/six-declare-exception.html" class="mencon2_kn ">6.5 异常的处理方式之二：声明异常（throws子句）</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="6.6 自定义异常" href="/Java_jQuery_in_action/six-custom-exception.html" class="mencon2_kn ">6.6 自定义异常</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="6.7 如何利用百度解决异常问题" href="/Java_jQuery_in_action/six-baidu-solve.html" class="mencon2_kn ">6.7 如何利用百度解决异常问题</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第六章 总结" href="/Java_jQuery_in_action/six-summary.html" class="mencon2_kn ">第六章 总结</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第六章 作业" href="/Java_jQuery_in_action/six-task.html" class="mencon2_kn ">第六章 作业</a>
+                              </div>
+                         </div>
+                        <div class="menu1_kn">
+             <a href="javascript:;" title="第七章 数组" class="menuT1_kn">第七章 数组</a>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="7.1 数组概述和特点" href="/Java_jQuery_in_action/seven-array-characteristic.html" class="mencon2_kn ">7.1 数组概述和特点</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="7.2.1 数组声明" href="/Java_jQuery_in_action/seven-array-declaration.html" class="mencon2_kn ">7.2.1 数组声明</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="7.2.2 初始化" href="/Java_jQuery_in_action/seven-initialization.html" class="mencon2_kn ">7.2.2 初始化</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="7.3.1 数组的遍历" href="/Java_jQuery_in_action/seven-array-ergodic.html" class="mencon2_kn ">7.3.1 数组的遍历</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="7.3.2 for-each循环" href="/Java_jQuery_in_action/seven-for-each.html" class="mencon2_kn ">7.3.2 for-each循环</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="7.3.3 数组的拷贝" href="/Java_jQuery_in_action/seven-array-copy.html" class="mencon2_kn ">7.3.3 数组的拷贝</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="7.3.4 java.util.Arrays类 " href="/Java_jQuery_in_action/seven-javautilarrays.html" class="mencon2_kn ">7.3.4 java.util.Arrays类 </a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="7.4 多维数组" href="/Java_jQuery_in_action/seven-multidimensional-array.html" class="mencon2_kn ">7.4 多维数组</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="7.5 数组存储表格数据" href="/Java_jQuery_in_action/array-stores-table-data.html" class="mencon2_kn ">7.5 数组存储表格数据</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="7.6.1 冒泡排序的基础算法" href="/Java_jQuery_in_action/seven-bubble-sort.html" class="mencon2_kn ">7.6.1 冒泡排序的基础算法</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="7.6.2 冒泡排序的优化算法" href="/Java_jQuery_in_action/seven-optimization-algorithm.html" class="mencon2_kn ">7.6.2 冒泡排序的优化算法</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="7.7 二分法查找" href="/Java_jQuery_in_action/seven-binary-search.html" class="mencon2_kn ">7.7 二分法查找</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第七章 总结" href="/Java_jQuery_in_action/seven-summary.html" class="mencon2_kn ">第七章 总结</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第七章 作业" href="/Java_jQuery_in_action/seven-task.html" class="mencon2_kn ">第七章 作业</a>
+                              </div>
+                         </div>
+                        <div class="menu1_kn">
+             <a href="javascript:;" title="第八章 常用类" class="menuT1_kn">第八章 常用类</a>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="8.1.1 包装类基本知识" href="/Java_jQuery_in_action/eight-wrapper class.html" class="mencon2_kn ">8.1.1 包装类基本知识</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="8.1.2 包装类的用途" href="/Java_jQuery_in_action/eight-wrapper-purpose.html" class="mencon2_kn ">8.1.2 包装类的用途</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="8.1.3 自动装箱和拆箱" href="/Java_jQuery_in_action/eight-autoboxing-unboxing.html" class="mencon2_kn ">8.1.3 自动装箱和拆箱</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="8.1.4 包装类的缓存问题 " href="/Java_jQuery_in_action/eight-cache-problem.html" class="mencon2_kn ">8.1.4 包装类的缓存问题 </a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="8.2.1 String类" href="/Java_jQuery_in_action/eight-string-class.html" class="mencon2_kn ">8.2.1 String类</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="8.2.2 StringBuffer和StringBuilder" href="/Java_jQuery_in_action/eight-buffebuild.html" class="mencon2_kn ">8.2.2 StringBuffer和StringBuilder</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="8.2.3 不可变和可变字符序列使用陷阱" href="/Java_jQuery_in_action/eight-usingtraps.html" class="mencon2_kn ">8.2.3 不可变和可变字符序列使用陷阱</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="8.3 时间处理相关类" href="/Java_jQuery_in_action/eight-timeprocessing.html" class="mencon2_kn ">8.3 时间处理相关类</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="8.3.1 Date时间类(java.util.Date)" href="/Java_jQuery_in_action/eight-javautildate.html" class="mencon2_kn ">8.3.1 Date时间类(java.util.Date)</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="8.3.2 DateFormat类和SimpleDateFormat类" href="/Java_jQuery_in_action/eight-date-simple.html" class="mencon2_kn ">8.3.2 DateFormat类和SimpleDateFormat类</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="8.3.3 Calendar日历类" href="/Java_jQuery_in_action/eight-calendar.html" class="mencon2_kn ">8.3.3 Calendar日历类</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="8.4 Math类" href="/Java_jQuery_in_action/eight-math.html" class="mencon2_kn ">8.4 Math类</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="8.5.1 File类的基本用法" href="/Java_jQuery_in_action/eight-file.html" class="mencon2_kn ">8.5.1 File类的基本用法</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="8.5.2 递归遍历目录结构和树状展现" href="/Java_jQuery_in_action/eight-recursive-traversal.html" class="mencon2_kn ">8.5.2 递归遍历目录结构和树状展现</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="8.6 枚举" href="/Java_jQuery_in_action/eight-enumeration.html" class="mencon2_kn ">8.6 枚举</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第八章 总结" href="/Java_jQuery_in_action/eight-summary.html" class="mencon2_kn ">第八章 总结</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第八章 作业" href="/Java_jQuery_in_action/eight-task.html" class="mencon2_kn ">第八章 作业</a>
+                              </div>
+                         </div>
+                        <div class="menu1_kn">
+             <a href="javascript:;" title="第九章 容器" class="menuT1_kn">第九章 容器</a>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="9.1 泛型Generics" href="/Java_jQuery_in_action/nine-generics.html" class="mencon2_kn ">9.1 泛型Generics</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="9.1.1 自定义泛型" href="/Java_jQuery_in_action/nine-customgenerics.html" class="mencon2_kn ">9.1.1 自定义泛型</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="9.1.2 容器中使用泛型" href="/Java_jQuery_in_action/nine-generics-containers.html" class="mencon2_kn ">9.1.2 容器中使用泛型</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="9.2 Collection接口" href="/Java_jQuery_in_action/nine-collection.html" class="mencon2_kn ">9.2 Collection接口</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="9.3.1 List特点和常用方法" href="/Java_jQuery_in_action/nine-list.html" class="mencon2_kn ">9.3.1 List特点和常用方法</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="9.3.2 ArrayList特点和底层实现" href="/Java_jQuery_in_action/nine-arraylist.html" class="mencon2_kn ">9.3.2 ArrayList特点和底层实现</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="9.3.3 LinkedList特点和底层实现" href="/Java_jQuery_in_action/nine-linkedlist.html" class="mencon2_kn ">9.3.3 LinkedList特点和底层实现</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="9.3.4 Vector向量" href="/Java_jQuery_in_action/nine-vector.html" class="mencon2_kn ">9.3.4 Vector向量</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="9.4 Map接口" href="/Java_jQuery_in_action/nine-mapinterface.html" class="mencon2_kn ">9.4 Map接口</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="9.4.1 HashMap和HashTable" href="/Java_jQuery_in_action/nine-hash-maptable.html" class="mencon2_kn ">9.4.1 HashMap和HashTable</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="9.4.2 HashMap底层实现详解" href="/Java_jQuery_in_action/nine-hashmap-bottom.html" class="mencon2_kn ">9.4.2 HashMap底层实现详解</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="9.4.3 二叉树和红黑二叉树" href="/Java_jQuery_in_action/nine-twofork.html" class="mencon2_kn ">9.4.3 二叉树和红黑二叉树</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="9.4.4 TreeMap的使用和底层实现" href="/Java_jQuery_in_action/nine-treemap.html" class="mencon2_kn ">9.4.4 TreeMap的使用和底层实现</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="9.5 Set接口" href="/Java_jQuery_in_action/nine-setinterface.html" class="mencon2_kn ">9.5 Set接口</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="9.5.1 HashSet基本使用" href="/Java_jQuery_in_action/nine-hashset-basicusage.html" class="mencon2_kn ">9.5.1 HashSet基本使用</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="9.5.2 HashSet底层实现" href="/Java_jQuery_in_action/nine-hashset-bottomimplementation.html" class="mencon2_kn ">9.5.2 HashSet底层实现</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="9.5.3 TreeSet的使用和底层实现" href="/Java_jQuery_in_action/nine-treeset-underlyingimplementation.html" class="mencon2_kn ">9.5.3 TreeSet的使用和底层实现</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="9.6.1 迭代器介绍" href="/Java_jQuery_in_action/nine-iterator.html" class="mencon2_kn ">9.6.1 迭代器介绍</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="9.6.2 使用Iterator迭代器遍历容器元素（List/Set/Map）" href="/Java_jQuery_in_action/nine-iterator.html" class="mencon2_kn ">9.6.2 使用Iterator迭代器遍历容器元素（List/Set/Map）</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="9.7 遍历集合的方法总结" href="/Java_jQuery_in_action/nine-ergodicset.html" class="mencon2_kn ">9.7 遍历集合的方法总结</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="9.8 Collections工具类" href="/Java_jQuery_in_action/nine-collections.html" class="mencon2_kn ">9.8 Collections工具类</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第九章 总结" href="/Java_jQuery_in_action/nine-summary.html" class="mencon2_kn ">第九章 总结</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第九章 作业" href="/Java_jQuery_in_action/nine-task.html" class="mencon2_kn ">第九章 作业</a>
+                              </div>
+                         </div>
+                        <div class="menu1_kn">
+             <a href="javascript:;" title="第十章 IO技术" class="menuT1_kn">第十章 IO技术</a>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.1 基本概念和IO入门" href="/Java_jQuery_in_action/ten-iqtechnology.html" class="mencon2_kn ">10.1 基本概念和IO入门</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.1.1 数据源" href="/Java_jQuery_in_action/ten-datasource.html" class="mencon2_kn ">10.1.1 数据源</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.1.2 流的概念" href="/Java_jQuery_in_action/nine-flowconcept.html" class="mencon2_kn ">10.1.2 流的概念</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.1.3 第一个简单的IO流程序及深入理解" href="/Java_jQuery_in_action/ten-iqflowprogram.html" class="mencon2_kn ">10.1.3 第一个简单的IO流程序及深入理解</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.1.4 Java中流的概念细分" href="/Java_jQuery_in_action/ten-javamidstream .html" class="mencon2_kn ">10.1.4 Java中流的概念细分</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.1.5 Java中IO流类的体系" href="/Java_jQuery_in_action/ten-javaio-streamclass.html" class="mencon2_kn ">10.1.5 Java中IO流类的体系</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.1.6 四大IO抽象类" href="/Java_jQuery_in_action/ten-fourmajorio.html" class="mencon2_kn ">10.1.6 四大IO抽象类</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.2.1 文件字节流" href="/Java_jQuery_in_action/ten-filebytestream.html" class="mencon2_kn ">10.2.1 文件字节流</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.2.2 文件字符流" href="/Java_jQuery_in_action/ten-filecharacter-stream.html" class="mencon2_kn ">10.2.2 文件字符流</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.2.3 缓冲字节流" href="/Java_jQuery_in_action/ten-bufferedbyte.html" class="mencon2_kn  mseclet_kn ">10.2.3 缓冲字节流</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.2.4 缓冲字符流" href="/Java_jQuery_in_action/ten-bufferedcharacter.html" class="mencon2_kn ">10.2.4 缓冲字符流</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.2.5 字节数组流" href="/Java_jQuery_in_action/ten-bytearray.html" class="mencon2_kn ">10.2.5 字节数组流</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.2.6 数据流" href="/Java_jQuery_in_action/ten-datastream.html" class="mencon2_kn ">10.2.6 数据流</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.2.7 对象流" href="/Java_jQuery_in_action/ten-objectstream.html" class="mencon2_kn ">10.2.7 对象流</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.2.8 转换流" href="/Java_jQuery_in_action/ten-transitionstream.html" class="mencon2_kn ">10.2.8 转换流</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.3.1 序列化和反序列化是什么" href="/Java_jQuery_in_action/ten-serialization.html" class="mencon2_kn ">10.3.1 序列化和反序列化是什么</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.3.2 序列化涉及的类和接口" href="/Java_jQuery_in_action/ten-serialization-involves.html" class="mencon2_kn ">10.3.2 序列化涉及的类和接口</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.3.3 序列化/反序列化的步骤和实例" href="/Java_jQuery_in_action/ten-steps-examples.html" class="mencon2_kn ">10.3.3 序列化/反序列化的步骤和实例</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.4.1 装饰器模式简介" href="/Java_jQuery_in_action/ten-decoratormode.html" class="mencon2_kn ">10.4.1 装饰器模式简介</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.4.2 IO流体系中的装饰器模式" href="/Java_jQuery_in_action/ten-io-decoratormode.html" class="mencon2_kn ">10.4.2 IO流体系中的装饰器模式</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.5 Apache IOUtils和FileUtils的使用" href="/Java_jQuery_in_action/ten-apacheioutils-fileutils.html" class="mencon2_kn ">10.5 Apache IOUtils和FileUtils的使用</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.5.1  Apache基金会介绍" href="/Java_jQuery_in_action/ten-apachefoundation.html" class="mencon2_kn ">10.5.1  Apache基金会介绍</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.5.2 FileUtils的妙用" href="/Java_jQuery_in_action/ten-fileutils.html" class="mencon2_kn ">10.5.2 FileUtils的妙用</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="10.5.3 IOUtils的妙用" href="/Java_jQuery_in_action/ten-useioutils.html" class="mencon2_kn ">10.5.3 IOUtils的妙用</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第十章 总结" href="/Java_jQuery_in_action/ten-summary.html" class="mencon2_kn ">第十章 总结</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第十章 作业" href="/Java_jQuery_in_action/ten-task.html" class="mencon2_kn ">第十章 作业</a>
+                              </div>
+                         </div>
+                        <div class="menu1_kn">
+             <a href="javascript:;" title="第十一章 多线程技术" class="menuT1_kn">第十一章 多线程技术</a>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="11.1 基本概念" href="/Java_jQuery_in_action/eleven-basicconcept.html" class="mencon2_kn ">11.1 基本概念</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="11.1.1 程序" href="/Java_jQuery_in_action/eleven-program.html" class="mencon2_kn ">11.1.1 程序</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="11.1.2 进程" href="/Java_jQuery_in_action/eleven-process.html" class="mencon2_kn ">11.1.2 进程</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="11.1.3 线程" href="/Java_jQuery_in_action/eleven-thread.html" class="mencon2_kn ">11.1.3 线程</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="11.1.4 线程和进程的区别" href="/Java_jQuery_in_action/eleven-difference.html" class="mencon2_kn ">11.1.4 线程和进程的区别</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="11.1.5 进程与程序的区别" href="/Java_jQuery_in_action/eleven-distinction.html" class="mencon2_kn ">11.1.5 进程与程序的区别</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="11.2 Java中如何实现多线程" href="/Java_jQuery_in_action/eleven-javamultithreading.html" class="mencon2_kn ">11.2 Java中如何实现多线程</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="11.2.1 通过继承Thread类实现多线程" href="/Java_jQuery_in_action/eleven-inheritthread.html" class="mencon2_kn ">11.2.1 通过继承Thread类实现多线程</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="11.2.2 通过Runnable接口实现多线程" href="/Java_jQuery_in_action/eleven-runnable-interface.html" class="mencon2_kn ">11.2.2 通过Runnable接口实现多线程</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="11.3.1 线程状态" href="/Java_jQuery_in_action/eleven-threadstate.html" class="mencon2_kn ">11.3.1 线程状态</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="11.3.2 终止线程的典型方式" href="/Java_jQuery_in_action/eleven-typica-terminatethread.html" class="mencon2_kn ">11.3.2 终止线程的典型方式</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="11.3.3 暂停线程执行sleep/yield" href="/Java_jQuery_in_action/eleven-pausethread-sleep.html" class="mencon2_kn ">11.3.3 暂停线程执行sleep/yield</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="11.3.4 线程的联合join()" href="/Java_jQuery_in_action/eleven-thread-federation.html" class="mencon2_kn ">11.3.4 线程的联合join()</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="11.4.1 获取线程基本信息的方法" href="/Java_jQuery_in_action/eleven-basicinformation.html" class="mencon2_kn ">11.4.1 获取线程基本信息的方法</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="11.4.2 线程的优先级" href="/Java_jQuery_in_action/eleven-threadpriority.html" class="mencon2_kn ">11.4.2 线程的优先级</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="11.5.1 什么是线程同步" href="/Java_jQuery_in_action/eleven-thread-synchronization.html" class="mencon2_kn ">11.5.1 什么是线程同步</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="11.5.2 实现线程同步" href="/Java_jQuery_in_action/eleven-achieve-synchronization.html" class="mencon2_kn ">11.5.2 实现线程同步</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="11.5.3 死锁及解决方案" href="/Java_jQuery_in_action/eleven-deadlock.html" class="mencon2_kn ">11.5.3 死锁及解决方案</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="11.6 线程并发协作(生产者/消费者模式)" href="/Java_jQuery_in_action/eleven-threadconcurrent-collaboration.html" class="mencon2_kn ">11.6 线程并发协作(生产者/消费者模式)</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="11.7 任务定时调度" href="/Java_jQuery_in_action/eleven-scheduled-scheduling.html" class="mencon2_kn ">11.7 任务定时调度</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第十一章 总结" href="/Java_jQuery_in_action/eleven-summary.html" class="mencon2_kn ">第十一章 总结</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第十一章 作业" href="/Java_jQuery_in_action/eleven-task.html" class="mencon2_kn ">第十一章 作业</a>
+                              </div>
+                         </div>
+                        <div class="menu1_kn">
+             <a href="javascript:;" title="第十二章 网络编程" class="menuT1_kn">第十二章 网络编程</a>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="12.1 基本概念" href="/Java_jQuery_in_action/twelve-concept.html" class="mencon2_kn ">12.1 基本概念</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="12.2.1 TCP协议和UDP协议的联系和区别" href="/Java_jQuery_in_action/twelve-tcpudp.html" class="mencon2_kn ">12.2.1 TCP协议和UDP协议的联系和区别</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="12.2.2 TCP协议" href="/Java_jQuery_in_action/twelve-tcp.html" class="mencon2_kn ">12.2.2 TCP协议</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="12.2.3 UDP协议" href="/Java_jQuery_in_action/twelve-udp.html" class="mencon2_kn ">12.2.3 UDP协议</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="12.3 Java网络编程" href="/Java_jQuery_in_action/twelve-java-networkprogramming.html" class="mencon2_kn ">12.3 Java网络编程</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="12.3.1 InetAddress" href="/Java_jQuery_in_action/twelve-inetaddress.html" class="mencon2_kn ">12.3.1 InetAddress</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="12.3.2 InetSocketAddress" href="/Java_jQuery_in_action/twelve-inetsocketaddress.html" class="mencon2_kn ">12.3.2 InetSocketAddress</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="12.3.3 URL类" href="/Java_jQuery_in_action/twelve-url.html" class="mencon2_kn ">12.3.3 URL类</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="12.3.4 基于TCP协议的Socket编程和通信" href="/Java_jQuery_in_action/twelve-tcpsocket.html" class="mencon2_kn ">12.3.4 基于TCP协议的Socket编程和通信</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="12.3.5 UDP通讯的实现" href="/Java_jQuery_in_action/twelve-udpcommunication.html" class="mencon2_kn ">12.3.5 UDP通讯的实现</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第十二章 总结" href="/Java_jQuery_in_action/twelve-summary.html" class="mencon2_kn ">第十二章 总结</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="第十二章 作业" href="/Java_jQuery_in_action/twelve-task.html" class="mencon2_kn ">第十二章 作业</a>
+                              </div>
+                         </div>
+                        <div class="menu1_kn">
+             <a href="javascript:;" title="第十三章 J20飞机游戏项目(手把手教)" class="menuT1_kn">第十三章 J20飞机游戏项目(手把手教)</a>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="13.1 简介和项目目标" href="/Java_jQuery_in_action/thirteen-introduction.html" class="mencon2_kn ">13.1 简介和项目目标</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="13.2 游戏项目基本功能开发" href="/Java_jQuery_in_action/thirteen-basicfunction.html" class="mencon2_kn ">13.2 游戏项目基本功能开发</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="13.2.1 AWT技术画出游戏主窗口(0.1版)" href="/Java_jQuery_in_action/thirteen-awttechnology.html" class="mencon2_kn ">13.2.1 AWT技术画出游戏主窗口(0.1版)</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="13.2.2 图形和文本绘制 (0.2版)" href="/Java_jQuery_in_action/thirteen-draw.html" class="mencon2_kn ">13.2.2 图形和文本绘制 (0.2版)</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="13.2.3 ImageIO实现图片加载技术(0.3版)" href="/Java_jQuery_in_action/thirteen-imageio.html" class="mencon2_kn ">13.2.3 ImageIO实现图片加载技术(0.3版)</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="13.2.4 多线程和内部类实现动画效果(0.4版)" href="/Java_jQuery_in_action/thirteen-animation-effects.html" class="mencon2_kn ">13.2.4 多线程和内部类实现动画效果(0.4版)</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="13.2.5 双缓冲技术解决闪烁问题(0.4)" href="/Java_jQuery_in_action/thirteen-flicker.html" class="mencon2_kn ">13.2.5 双缓冲技术解决闪烁问题(0.4)</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="13.2.6 GameObject类设计(0.5版)" href="/Java_jQuery_in_action/thirteen-gameobject.html" class="mencon2_kn ">13.2.6 GameObject类设计(0.5版)</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="13.3 飞机类设计(0.6版)" href="/Java_jQuery_in_action/thirteen-aircraftclass.html" class="mencon2_kn ">13.3 飞机类设计(0.6版)</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="13.3.1 键盘控制原理" href="/Java_jQuery_in_action/thirteen-keyboard-control.html" class="mencon2_kn ">13.3.1 键盘控制原理</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="13.3.2 飞机类：增加操控功能" href="/Java_jQuery_in_action/thirteen-increase-controlfunction.html" class="mencon2_kn ">13.3.2 飞机类：增加操控功能</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="13.3.3 主窗口类：增加键盘监听" href="/Java_jQuery_in_action/thirteen-mainwindowclass.html" class="mencon2_kn ">13.3.3 主窗口类：增加键盘监听</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="13.4.1 炮弹类基本设计" href="/Java_jQuery_in_action/thirteen-triggerfishes.html" class="mencon2_kn ">13.4.1 炮弹类基本设计</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="13.4.2 炮弹任意角度飞行路径" href="/Java_jQuery_in_action/thirteen-cannonball-flight.html" class="mencon2_kn ">13.4.2 炮弹任意角度飞行路径</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="13.4.3 容器对象存储多发炮弹" href="/Java_jQuery_in_action/thirteen-multiplerounds.html" class="mencon2_kn ">13.4.3 容器对象存储多发炮弹</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="13.5.1 矩形检测原理" href="/Java_jQuery_in_action/thirteen-rectangle-detection.html" class="mencon2_kn ">13.5.1 矩形检测原理</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="13.5.2 炮弹和飞机碰撞检测" href="/Java_jQuery_in_action/thirteen-shellsairplanes.html" class="mencon2_kn ">13.5.2 炮弹和飞机碰撞检测</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="13.6 爆炸效果的实现(0.9版)" href="/Java_jQuery_in_action/thirteen-explosioneffect.html" class="mencon2_kn ">13.6 爆炸效果的实现(0.9版)</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="13.6.1 爆炸类的基本设计" href="/Java_jQuery_in_action/thirteen-explosiveclass.html" class="mencon2_kn ">13.6.1 爆炸类的基本设计</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="13.6.2 主窗口类创建爆炸对象" href="/Java_jQuery_in_action/thirteen-createexplosion.html" class="mencon2_kn ">13.6.2 主窗口类创建爆炸对象</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="13.7.1 计时功能" href="/Java_jQuery_in_action/thirteen-timingfunction.html" class="mencon2_kn ">13.7.1 计时功能</a>
+                              </div>
+                          <div class="menu2_kn">
+                 <span class="menbtn2_kn"  style="background: url(/public/images/files_kn.gif) no-repeat left center;width:18px;" ></span>
+                 <a title="13.7.2 学员开发Java基础小项目案例展示和说明" href="/Java_jQuery_in_action/thirteen-student-development.html" class="mencon2_kn ">13.7.2 学员开发Java基础小项目案例展示和说明</a>
+                              </div>
+                         </div>
+                    </div>
+        <input type="hidden" name="course_id" value="2902">
+        <input type="hidden" name="key_course_pay" value="0">
+                <div class="pizhu_content">
+                <div class="infoM_kn">
+                    <div class="teacher_hide">全屏</div>
+                                                <p style="line-height: 3em; text-align: center;"><span style="font-size: 24px;"><strong><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;;">10.2.3 缓冲字节流</span></strong></span></p><p style="line-height: 3em; text-align: center;"><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; font-size: 16px;"><br/></span></p><p style="text-align: center;"><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; font-size: 20px; color: rgb(255, 0, 0);"><strong>【专业IT培训机构,真正零首付入学</strong></span><a href="http://www.bjsxt.com/" target="_self" style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; text-decoration: underline; font-size: 20px; color: rgb(255, 0, 0);"><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; font-size: 20px; color: rgb(255, 0, 0);"><strong>www.bjsxt.com</strong></span></a><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; font-size: 20px; color: rgb(255, 0, 0);"><strong>】</strong></span></p><p style="line-height: 3em; text-align: center;"><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; font-size: 16px;"><br/></span></p><p style="line-height: 3em;"><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; font-size: 16px;">&nbsp; &nbsp; &nbsp; Java缓冲流本身并不具有IO流的读取与写入功能，只是在别的流(节点流或其他处理流)上加上缓冲功能提高效率，就像是把别的流包装起来一样，因此缓冲流是一种处理流(包装流)。</span></p><p style="line-height: 3em;"><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; font-size: 16px;"><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; line-height: 48px;">&nbsp; &nbsp; &nbsp;&nbsp;</span>当对文件或者其他数据源进行频繁的读写操作时，效率比较低，这时如果使用缓冲流就能够更高效的读写信息。因为缓冲流是先将数据缓存起来，然后当缓存区存满后或者手动刷新时再一次性的读取到程序或写入目的地。</span></p><p style="line-height: 3em;"><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; font-size: 16px;"><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; line-height: 48px;">&nbsp; &nbsp; &nbsp;&nbsp;</span>因此，缓冲流还是很重要的，我们在IO操作时记得加上缓冲流来提升性能。</span></p><p style="line-height: 3em;"><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; font-size: 16px;"><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; line-height: 48px;">&nbsp; &nbsp; &nbsp;&nbsp;</span>BufferedInputStream和BufferedOutputStream这两个流是缓冲字节流，通过内部缓存数组来提高操作流的效率。</span></p><p style="line-height: 3em;"><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; font-size: 16px;"><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; line-height: 48px;">&nbsp; &nbsp; &nbsp;&nbsp;</span>下面我们通过两种方式(普通文件字节流与缓冲文件字节流)实现一个视频文件的复制，来体会一下缓冲流的好处。</span></p><p style="line-height: 3em;"><span style="font-size: 18px;"><strong><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;;">【示例10-7】使用缓冲流实现文件的高效率复制</span></strong></span></p><pre class="brush:java;toolbar:false">import&nbsp;java.io.BufferedInputStream;
+import&nbsp;java.io.BufferedOutputStream;
+import&nbsp;java.io.FileInputStream;
+import&nbsp;java.io.FileOutputStream;
+import&nbsp;java.io.IOException;
+
+public&nbsp;class&nbsp;TestBufferedFileCopy1&nbsp;{
+
+	public&nbsp;static&nbsp;void&nbsp;main(String[]&nbsp;args)&nbsp;{
+		//&nbsp;使用缓冲字节流实现复制
+		long&nbsp;time1&nbsp;=&nbsp;System.currentTimeMillis();
+		copyFile1(&quot;D:/电影/华语/大陆/尚学堂传奇.mp4&quot;,&nbsp;&quot;D:/电影/华语/大陆/尚学堂越
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;+&quot;来越传奇.mp4&quot;);
+		long&nbsp;time2&nbsp;=&nbsp;System.currentTimeMillis();
+		System.out.println(&quot;缓冲字节流花费的时间为：&quot;&nbsp;+&nbsp;(time2&nbsp;-&nbsp;time1));
+
+		//&nbsp;使用普通字节流实现复制
+		long&nbsp;time3&nbsp;=&nbsp;System.currentTimeMillis();
+		copyFile2(&quot;D:/电影/华语/大陆/尚学堂传奇.mp4&quot;,&nbsp;&quot;D:/电影/华语/大陆/尚学堂越
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;+&quot;来越传奇2.mp4&quot;);
+		long&nbsp;time4&nbsp;=&nbsp;System.currentTimeMillis();
+		System.out.println(&quot;普通字节流花费的时间为：&quot;&nbsp;+&nbsp;(time4&nbsp;-&nbsp;time3));
+	}
+	/**缓冲字节流实现的文件复制的方法*/
+	static&nbsp;void&nbsp;copyFile1(String&nbsp;src,&nbsp;String&nbsp;dec)&nbsp;{
+		FileInputStream&nbsp;fis&nbsp;=&nbsp;null;
+		BufferedInputStream&nbsp;bis&nbsp;=&nbsp;null;
+		FileOutputStream&nbsp;fos&nbsp;=&nbsp;null;
+		BufferedOutputStream&nbsp;bos&nbsp;=&nbsp;null;
+		int&nbsp;temp&nbsp;=&nbsp;0;
+		try&nbsp;{
+			fis&nbsp;=&nbsp;new&nbsp;FileInputStream(src);
+			fos&nbsp;=&nbsp;new&nbsp;FileOutputStream(dec);
+			//使用缓冲字节流包装文件字节流，增加缓冲功能，提高效率
+			//缓存区的大小（缓存数组的长度）默认是8192，也可以自己指定大小
+			bis&nbsp;=&nbsp;new&nbsp;BufferedInputStream(fis);
+			bos&nbsp;=&nbsp;new&nbsp;BufferedOutputStream(fos);
+			while&nbsp;((temp&nbsp;=&nbsp;bis.read())&nbsp;!=&nbsp;-1)&nbsp;{
+				bos.write(temp);
+			}
+		}&nbsp;catch&nbsp;(Exception&nbsp;e)&nbsp;{
+			e.printStackTrace();
+		}&nbsp;finally&nbsp;{
+			//注意：增加处理流后，注意流的关闭顺序！“后开的先关闭！”
+			try&nbsp;{
+				if&nbsp;(bos&nbsp;!=&nbsp;null)&nbsp;{
+					bos.close();
+				}
+			}&nbsp;catch&nbsp;(IOException&nbsp;e)&nbsp;{
+				e.printStackTrace();
+			}
+			try&nbsp;{
+				if&nbsp;(bis&nbsp;!=&nbsp;null)&nbsp;{
+					bis.close();
+				}
+			}&nbsp;catch&nbsp;(IOException&nbsp;e)&nbsp;{
+				e.printStackTrace();
+			}
+			try&nbsp;{
+				if&nbsp;(fos&nbsp;!=&nbsp;null)&nbsp;{
+					fos.close();
+				}
+			}&nbsp;catch&nbsp;(IOException&nbsp;e)&nbsp;{
+				e.printStackTrace();
+			}
+			try&nbsp;{
+				if&nbsp;(fis&nbsp;!=&nbsp;null)&nbsp;{
+					fis.close();
+				}
+			}&nbsp;catch&nbsp;(IOException&nbsp;e)&nbsp;{
+				e.printStackTrace();
+			}
+		}
+	}
+	/**普通节流实现的文件复制的方法*/
+	static&nbsp;void&nbsp;copyFile2(String&nbsp;src,&nbsp;String&nbsp;dec)&nbsp;{
+		FileInputStream&nbsp;fis&nbsp;=&nbsp;null;
+		FileOutputStream&nbsp;fos&nbsp;=&nbsp;null;
+		int&nbsp;temp&nbsp;=&nbsp;0;
+		try&nbsp;{
+			fis&nbsp;=&nbsp;new&nbsp;FileInputStream(src);
+			fos&nbsp;=&nbsp;new&nbsp;FileOutputStream(dec);
+			while&nbsp;((temp&nbsp;=&nbsp;fis.read())&nbsp;!=&nbsp;-1)&nbsp;{
+				fos.write(temp);
+			}
+		}&nbsp;catch&nbsp;(Exception&nbsp;e)&nbsp;{
+			e.printStackTrace();
+		}&nbsp;finally&nbsp;{
+			try&nbsp;{
+				if&nbsp;(fos&nbsp;!=&nbsp;null)&nbsp;{
+					fos.close();
+				}
+			}&nbsp;catch&nbsp;(IOException&nbsp;e)&nbsp;{
+				e.printStackTrace();
+			}
+			try&nbsp;{
+				if&nbsp;(fis&nbsp;!=&nbsp;null)&nbsp;{
+					fis.close();
+				}
+			}&nbsp;catch&nbsp;(IOException&nbsp;e)&nbsp;{
+				e.printStackTrace();
+			}
+		}
+	}
+}</pre><p style="line-height: 3em;"><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; font-size: 16px;"><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; line-height: 48px;">&nbsp; &nbsp; &nbsp;&nbsp;</span>执行结果如图10-13所示：</span></p><p style="line-height: 3em; text-align: center;"><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; font-size: 16px;"><img src="/360shop/Public/admin/UEditor/20170525/1495705852268244.png" title="1495705852268244.png" alt="图10-13 示例10-7运行效果图.png"/></span></p><p style="line-height: 3em; text-align: center;"><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; font-size: 16px;">图10-13 示例10-7运行效果图</span></p><p style="line-height: 3em;"><span style="font-size: 18px;"><strong><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;;">注意</span></strong></span></p><p style="line-height: 3em;"><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; font-size: 16px;">&nbsp; &nbsp; &nbsp; 1. 在关闭流时，应该先关闭最外层的包装流，即“后开的先关闭”。</span></p><p style="line-height: 3em;"><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; font-size: 16px;"><span style="font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; line-height: 48px;">&nbsp; &nbsp; &nbsp;&nbsp;</span>2. 缓存区的大小默认是8192字节，也可以使用其它的构造方法自己指定大小。</span></p>                    <script type="text/javascript" src="/public/jwplayer/sxt.js"></script>
+                    <script type="text/javascript" src="/public/jwplayer/controls.js"></script>  
+                    <div class="share">
+                        <span class="shareT fl">分享到：</span>
+                        <div class="bdsharebuttonbox"><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_more" data-cmd="more"></a></div>
+                        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+                        <p class="num fl"><span class="comment_num">0</span>评论</p>
+                        <div class="conm fl" id="pinglun">
+                            <img src="/public/images/conmment.png" alt=""/>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+
+                
+                <div class="clear"></div>
+                <div id="content" style="height:auto !important;">
+                    <div class="commentAll">
+                    <!--评论区域 begin-->
+                    <div class="reviewArea clearfix">
+                        <textarea class="content_comment comment-input" placeholder="Please enter a comment&hellip;" onkeyup="keyUP(this)"></textarea>
+                        <a href="javascript:;" class="plBtn">评论</a>
+                    </div>
+                    <!--评论区域 end-->
+                    <!--回复区域 begin-->
+                    <div class="comment-show">
+
+                    </div>
+                    <!--回复区域 end-->
+                </div>
+                </div>    
+        </div>
+<div id="pizhu_icon"  style="position: absolute; left: 200px; top: 40px; display: none;" title="添加批注"><img src="/public/images/tips.png" class="tipsIcon"></div>
+        <div class="clear"></div>
+        
+    </div>
+    <div id="main-content">
+        <strong  class="left_nav_open left_nav_shrink"></strong >
+        <div class="left_nav" style="width: 0px;">
+
+            <div class="l_title">分类导航</div>
+            <div class="l_nav_height">
+                <div class="l_nav">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/public/js/teacher.js" type="text/javascript"></script>
+    <script src="/public/js/course_right.js"></script>
+    
+    <ul class="list_y"></ul>
+<div class="drag">
+<div class="drop_cover">点击按住视频可拖动</div>
+    <div class="player">
+        <video poster="/public/images/video_default.jpg"  controls preload="none" data-sr="no reset" class="pl" src=""></video>
+    </div>
+    <div class="botton">
+        <p class="amplification">缩小</p>
+        <p class="close">关闭</p>
+        <div class="clear"></div>
+    </div>
+    <div class="winBox">
+        <ul class="scroll">
+            <li><span></span>正在学习</li>
+        </ul>
+    </div>
+</div>
+<script>
+    $(".buttonB").mouseover(function(){
+        var course_id = $("input[name=course_id]").val();
+        $.ajax({
+            data:{'course_id':course_id,'type_id':248,'key':0},
+            type:'post',
+            url:"/index1/login/getcourse_user",
+            dataType:'json',
+            success:function(data){
+                if(data.status ==1){
+                    if(data.type_id != 0){
+                        $(".buttonTips").show();
+                    }
+                }
+            }
+        });
+    }).mouseout(function(){
+        $(".buttonTips").hide();
+    });
+    $("#pinglun").click(function () {
+            $("html, body").animate({
+                scrollTop: $("#content").offset().top
+            }, {duration: 500, easing: "swing"});
+            return false;
+        });
+    $(window).scroll(function(){
+        if($(window).scrollTop()>200){
+            $('.drag').css({
+                'position':'fixed',
+                'top':'165px',
+                'right':'78px',
+                'z-index':'999'
+            });
+        }
+    });
+    (function(d,p){
+      var a=new XMLHttpRequest(),
+          b=d.body;
+      a.open("GET",p,!0);
+      a.send();
+      a.onload=function(){
+          var c=d.createElement("div");
+          c.style.display="none";
+          c.innerHTML=a.responseText;
+          b.insertBefore(c,b.childNodes[0])
+      }
+    })(document,"/public/jwplayer/sprite.svg");
+      plyr.setup({
+        enabled: true,
+        captions: {
+          defaultActive: false
+        },
+        controls: ["play", "current-time", "duration", "mute", "volume", "captions", "fullscreen"]
+      });
+    $(".buttonB").click(function(){
+        if(navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.match(/8./i)=="8.") 
+        { 
+        alert("浏览器版本过低，请升级或更换浏览器"); return;
+        } 
+        else if(navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.match(/7./i)=="7.") 
+        { 
+        alert("浏览器版本过低，请升级或更换浏览器");return;
+        } 
+        else if(navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.match(/6./i)=="6.") 
+        { 
+        alert("浏览器版本过低，请升级或更换浏览器"); return;
+        } 
+        var course_id = $("input[name=course_id]").val();
+        $.ajax({
+            data:{'course_id':course_id,'type_id':248,'key':0},
+            type:'post',
+            url:"/index1/login/getcourse_user",
+            dataType:'json',
+            success:function(data){
+                if(data.status ==1){
+                    //$('#nhplayer').attr('src',data.url);
+                    if(data.type_id == 0){
+                        $('.pl').attr('src',data.url);
+                        $('.scroll li span').html(data.email);
+                        if( $(".drag").hide()){
+                            $(".drag").show();
+                            $(".drag").fadeTo("fast", 1);
+                        }
+                        timer = setInterval(goLeft, 10);
+                    }else{
+                        location.href="/index/order/index/type_id/248.html"
+                    }
+                }else{
+                    alert('请登录，获取观看视频权限');
+                    location.href='/index/login/login';
+                }
+            }
+        });
+        
+    });
+    
+    var _move=false;
+    var _x,_y;
+     $(function(){
+        if ($('.drag').height() > 200)
+            $('#content').height(200);
+        $('.amplification').toggle(function() {
+            $('.drop_cover').css('width','95.5%');
+            $('.drag').height($('.drag').height() - 132);
+            $('.drag').width($('.drag').width() - 200);
+            $('.amplification').html('放大');
+        }, function() {
+            $('.drop_cover').css('width','96.7%');
+            $('.drag').height($('.drag').height() + 132);
+            $('.drag').width($('.drag').width() + 200);
+            $('.amplification').html('缩小');
+        })
+    });
+    $(".drag").hover(function(){
+        $(".drop_cover").show();
+    },function(){
+        $(".drop_cover").hide();
+    });
+
+    $(".close").click(function(){
+        $('.pl').attr('src','');
+        $(".drag").hide();
+        history.go(0);
+    });
+    $(".drag").click(function(){
+
+    }).mousedown(function(e){
+        _move=true;
+        _x=e.pageX-parseInt($(".drag").css("left"));
+        _y=e.pageY-parseInt($(".drag").css("top"));
+        $(".drag").fadeTo(20, 0.5);
+    });
+    $(document).mousemove(function(e){
+        if(_move){
+            var x=e.pageX-_x;
+            var y=e.pageY-_y;
+            $(".drag").css({top:y,left:x});
+        }
+    }).mouseup(function(){
+        _move=false;
+        $(".drag").css("opacity",1);
+    });
+    var num = 0;
+    function goLeft() {
+        //750是根据你给的尺寸，可变的
+        if (num >= 11520) {
+            num = 0;
+        }
+        num += 1;
+        $(".scroll").css({
+            right: num
+        })
+    }
+   </script>    
+       <div class="cover zoomIn">
+        <div class="coverCon rollIn"></div>
+    </div>
+    <script language="JavaScript" src="/index1/index/gethits/type_id/248.html"></script>
+    <script language="JavaScript" src="/index1/index/getcoursehits/course_id/2902.html"></script>
+    <script language="JavaScript" src="/index1/login/getuser.html"></script>
+</div>
+<div class="backTop_kn">
+    <a href="javascript:;">
+        <i class="iconfont icon-jiantou"></i>
+    </a>
+</div>
+
+    <div class="course">
+        <div class="conInfo">
+            <p class="courseT">尚学堂：</p>
+            <ul class="ul">
+                <li><a target="_blank" href="https://www.bjsxt.com/html-java.html">JavaEE培训</a></li>
+                <li><a target="_blank" href="https://www.bjsxt.com/html-bdt.html">大数据就业班培训</a></li>
+                <li><a target="_blank" href="https://www.bjsxt.com/dataweek.html">大数据云计算周末班培训</a></li>
+                <li><a target="_blank" href="https://www.bjsxt.com/html-bigdataliaison.html">零基础大数据连读班培训</a></li>
+                <li><a target="_blank" href="https://www.bjsxt.com/html-cloud.html">大数据云计算高手班培训</a></li>
+                <li><a target="_blank" href="https://www.bjsxt.com/html-intelligences.html">人工智能周末班培训</a></li>
+                <li><a target="_blank" href="https://www.bjsxt.com/html-python.html">Python全栈就业班</a></li>
+                <li><a target="_blank" href="https://www.bjsxt.com/html-h5-php.html">Web前端+移动端培训</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="linkF">
+        <div class="conInfo">
+            <p><span class="links">友情链接</span>：<a href="http://www.bjsxt.com" target="_blank">尚学堂</a><a href="http://www.java1234.com/" target="_blank">java1234</a><a href="http://www.shsxt.com" target="_blank">上海尚学堂</a><a href="http://www.phpxs.com/" target="_blank">编程学习网</a><a href="http://www.51asp.net/" target="_blank">asp.net源码</a><a href="http://www.52js8.com/forum.php" target="_blank">1401软件安全</a><a href="http://www.16aspx.com" target="_blank">16Aspx</a><a href="http://www.lantel.net/" target="_blank">培训学校管理系统</a><a href="http://www.bcwhy.com/" target="_blank">编程入门</a><a href="http://www.zixuephp.com/" target="_blank">自学php网</a><a href="http://www.tol24.com/" target="_blank">新东方英语</a><a href="http://www.waypoo.com/" target="_blank">合肥拓展训练公司</a><a href="https://coderschool.cn/" target="_blank">技术拉近你我</a><a href="http://www.bcty365.com/" target="_blank">B5教程网</a><a href="http://changsha.nlypx.com/" target="_blank"> 长沙企业培训</a><a href="http://efbj.tantuw.com/" target="_blank">北京英孚教育</a><a href="http://www.dotcpp.com/" target="_blank">C/C++学习</a><a href="http://jingrui.tantuw.com/" target="_blank">上海精锐教育</a><a href="http://zixuephp.net/" target="_blank">php自学网</a><a href="https://www.proginn.com/" target="_blank">程序员客栈 </a><a href="https://www.jisuapi.com/ " target="_blank">极速数据</a><a href="http://www.cjjjs.com" target="_blank">C++技术网</a> <br>申请友链或广告合作 联系QQ：397022857</p>
+        </div>
+    </div>
+    <div class="about">
+        <div class="conInfo">
+            <ul>
+                <li class="maR">北京总部地址：北京市海淀区西三旗街道建材城西路中腾建华商务大厦东侧二层尚学堂 </li>
+                <li>咨询电话：400-009-1906 010-56233821 </li>
+                <li class="maR1">Copyright 2007-2015 北京尚学堂科技有限公司 </li>
+                <li> 京ICP备13018289号-1 京公网安备11010802015183 <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261969808'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/stat.php%3Fid%3D1261969808%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script language="JavaScript" src="/public/js/comments.js"></script>
+<script>(function() {var _53code = document.createElement("script");_53code.src = "https://tb.53kf.com/code/code/10085067/1";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(_53code, s);})();</script>
+</body>
+</html>
