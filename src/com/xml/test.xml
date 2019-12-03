@@ -1,15 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<books> 
-  <!--This is a test for dom4j, holen, 2004.9.11-->  
-  <book show="yes"> 
-    <title>Dom4j Tutorials</title> 
-  </book>  
-  <book show="yes"> 
-    <title>Lucene Studing</title> 
-  </book>  
-  <book show="no"> 
-    <title>Lucene in Action</title> 
-  </book>  
-  <owner>O'Reilly</owner> 
-</books>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+	<servlet>
+		<servlet-name>service</servlet-name>
+		<servlet-class>aurora.service.http.FacadeServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>autocrud</servlet-name>
+		<servlet-class>aurora.service.http.AutoCrudServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>service</servlet-name>
+		<url-pattern>*.screen</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>service</servlet-name>
+		<url-pattern>*.svc</url-pattern>
+	</servlet-mapping>
+</web-app>
