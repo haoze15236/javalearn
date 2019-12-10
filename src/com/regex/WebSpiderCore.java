@@ -46,7 +46,7 @@ public class WebSpiderCore {
 		
 		while(m.find()){
 //			System.out.println(m.group(1));
-			result.add(m.group(1));
+			result.add(m.group());
 		}
 		return result;
 	}
@@ -54,7 +54,7 @@ public class WebSpiderCore {
 	public static void main(String[] args) {
 		String derstr = getUrlContent("http://www.163.com");
 //		System.out.println(derstr);
-		List<String> result = getMatchUrls(derstr,"href=\"(http.+?)\"");
+		List<String> result = getMatchUrls(derstr,"<a(.+?)</a>");
 		for(String temp:result){
 			System.out.println(temp);
 		}
