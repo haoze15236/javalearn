@@ -38,7 +38,6 @@ public class DynamicCompile {
 	}
 
 }
-
 class TestJavaCompiler {
 	public TestJavaCompiler() {
 		String filepath = "D:/training/software/workplace/javaLearn/src/com/reflect/TestTable.java";

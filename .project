@@ -14,4 +14,26 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/com/Test/AbstractFacadeServlet.class</name>
+			<type>1</type>
+			<location>C:/Users/郝泽/Desktop/aurora/service/http/AbstractFacadeServlet.class</location>
+		</link>
+		<link>
+			<name>src/com/Test/FacadeServlet.class</name>
+			<type>1</type>
+			<location>C:/Users/郝泽/Desktop/aurora/service/http/FacadeServlet.class</location>
+		</link>
+		<link>
+			<name>src/com/Test/HttpServiceInstance.class</name>
+			<type>1</type>
+			<location>C:/Users/郝泽/Desktop/aurora/service/http/HttpServiceInstance.class</location>
+		</link>
+		<link>
+			<name>src/com/Test/ServiceInstance.class</name>
+			<type>1</type>
+			<location>C:/Users/郝泽/Desktop/aurora/service/ServiceInstance.class</location>
+		</link>
+	</linkedResources>
 </projectDescription>

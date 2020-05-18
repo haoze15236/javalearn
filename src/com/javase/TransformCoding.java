@@ -18,7 +18,7 @@ public class TransformCoding {
 		FileOutputStream fos = null;
 
 		// transform("D:/training/software/workplace/javaLearn/src/com/IO/TestTransForm.java","GBK");
-		transformFile("D:/training/software/workplace/javaLearn/src/com", "gbk", "utf-8");
+		transformFile("D:/training/software/workplace/MySerlvet/src/com", "gbk", "utf-8");
 
 		// 查看当前系统的编码方式
 		// System.out.println(Charset.defaultCharset().name());
